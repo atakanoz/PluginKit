@@ -1,7 +1,7 @@
 {
-  "name": "flex",
+  "name": "pluginkit",
   "version": "1.0.0",
-  "description": "The simplest WordPress starter theme including full setup for Sass, PostCSS, Autoprefixer, stylelint, Webpack, ESLint, imagemin, Browsersync, etc.",
+  "description": "The simplest WordPress plugin boilerplate including full setup for Sass, PostCSS, Autoprefixer, stylelint, Webpack, Browsersync, etc.",
   "scripts": {
     "dev": "mix watch",
     "build": "mix",
@@ -10,15 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pressxco/flex.git"
+    "url": "git+https://github.com/atakanoz/PluginKit.git"
   },
   "keywords": [],
   "author": "Kite",
   "license": "GPL-2.0+",
-  "homepage": "https://github.com/pressxco/flex",
-  "bugs": {
-    "url": "https://github.com/pressxco/flex/issues"
-  },
+  "homepage": "https://github.com/atakanoz/PluginKit.git",
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.1",

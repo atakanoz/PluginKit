@@ -1,10 +1,10 @@
 {
-  "name": "pressx/flex",
-  "description": "Flex is the simplest WordPress starter theme including full setup for Sass, PostCSS, Autoprefixer, stylelint, Webpack, ESLint, imagemin, Browsersync, etc.",
+  "name": "atakanoz/pluginkit",
+  "description": "The simplest WordPress plugin boilerplate including full setup for Sass, PostCSS, Autoprefixer, stylelint, Webpack, Browsersync, etc.",
   "type": "project",
   "authors": [{
-    "name": "PressX",
-    "email": "info@pressx.co"
+    "name": "Atakan Oz",
+    "email": "hello@atakanoz.com"
   }],
   "require-dev": {
     "wp-coding-standards/wpcs": "^2.3"
