@@ -1,0 +1,13 @@
+.plugins_page_pluginkit {
+	@import "tailwindcss/base";
+	@import "tailwindcss/components";
+	@import "tailwindcss/utilities";
+}
+
+.test {
+	@apply bg-black;
+}
+
+.plugins_page_pluginkit {
+	@apply bg-slate-50;
+}

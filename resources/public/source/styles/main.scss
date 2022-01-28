@@ -1,0 +1,9 @@
+.plugins_page_pluginkit {
+	@import "tailwindcss/base";
+	@import "tailwindcss/components";
+	@import "tailwindcss/utilities";
+}
+
+.plugin-public-css {
+	@apply bg-black;
+}
