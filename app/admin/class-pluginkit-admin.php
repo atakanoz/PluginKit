@@ -73,7 +73,7 @@ class PluginKit_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __DIR__ ) . 'resources/admin/dist/styles.bundle.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, PLUGINKIT_PLUGIN_URL . 'resources/admin/dist/styles.bundle.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class PluginKit_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __DIR__ ) . 'resources/admin/dist/scripts.bundle.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, PLUGINKIT_PLUGIN_URL . 'resources/admin/dist/scripts.bundle.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -138,10 +138,6 @@ class PluginKit_Admin {
 		 */
 		$settings_link = array( '<a href="' . admin_url( 'plugins.php?page=' . $this->plugin_name ) . '">' . __( 'Settings', $this->plugin_name ) . '</a>' );
 
-		// -- OR --
-
-		// $settings_link = array( '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __( 'Settings', $this->plugin_name ) . '</a>', );
-
 		return array_merge( $settings_link, $links );
 
 	}
@@ -153,7 +149,7 @@ class PluginKit_Admin {
 	 */
 	public function display_plugin_setup_page() {
 
-		include_once plugin_dir_path( dirname( __DIR__ ) ) . 'resources/admin/views/pluginkit-admin.php';
+		include_once PLUGINKIT_PLUGIN_DIR . 'resources/admin/views/pluginkit-admin.php';
 
 	}
 

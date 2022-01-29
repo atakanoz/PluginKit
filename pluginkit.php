@@ -36,6 +36,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'PLUGINKIT_VERSION', '1.0.0' );
+define( 'PLUGINKIT_FILE', __FILE__ );
+define( 'PLUGINKIT_PLUGIN_DIR', trailingslashit( dirname( PLUGINKIT_FILE ) ) );
+define( 'PLUGINKIT_PLUGIN_URL', trailingslashit( plugin_dir_url( PLUGINKIT_FILE ) ) );
 
 /**
  * The code that runs during plugin activation.

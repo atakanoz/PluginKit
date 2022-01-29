@@ -72,7 +72,7 @@ class PluginKit_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'resources/public/dist/styles.bundle.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, PLUGINKIT_PLUGIN_URL . 'resources/public/dist/styles.bundle.css', array(), $this->version, 'all' );
 
 	}
 
@@ -95,7 +95,7 @@ class PluginKit_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'resources/public/dist/scripts.bundle.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, PLUGINKIT_PLUGIN_URL . 'resources/public/dist/scripts.bundle.js', array( 'jquery' ), $this->version, false );
 
 	}
 

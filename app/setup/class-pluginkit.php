@@ -102,24 +102,28 @@ class PluginKit {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'setup/class-pluginkit-loader.php';
+		require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'setup/class-pluginkit-i18n.php';
+		require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pluginkit-admin.php';
+		if ( PLUGINKIT_PLUGIN_DIR . 'app/admin/class-pluginkit-admin.php' ) {
+			require_once PLUGINKIT_PLUGIN_DIR . 'app/admin/class-pluginkit-admin.php';
+		}
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-pluginkit-public.php';
+		if ( PLUGINKIT_PLUGIN_DIR . 'app/public/class-pluginkit-public.php' ) {
+			require_once PLUGINKIT_PLUGIN_DIR . 'app/public/class-pluginkit-public.php';
+		}
 
 		$this->loader = new PluginKit_Loader();
 
@@ -153,6 +157,7 @@ class PluginKit {
 
 		$plugin_admin = new PluginKit_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		// Enqueue Styles and Scripts.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
@@ -163,7 +168,7 @@ class PluginKit {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
 
 		// Add Settings link to the plugin.
-		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+		$plugin_basename = plugin_basename( PLUGINKIT_PLUGIN_DIR . $this->plugin_name . '.php' );
 
 		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links' );
 

@@ -11,11 +11,3 @@
  * @package    PluginKit
  * @subpackage PluginKit/admin/partials
  */
-
-echo plugin_dir_path( dirname( __FILE__ ) );
-echo '</br>';
-echo plugin_dir_path( dirname( __DIR__ ) );
-echo '</br>';
-echo plugin_dir_url( __DIR__ );
-echo '</br>';
-echo plugin_dir_url( __FILE__ );
