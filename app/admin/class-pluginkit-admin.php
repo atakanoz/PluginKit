@@ -153,7 +153,7 @@ class PluginKit_Admin {
 	 */
 	public function display_plugin_setup_page() {
 
-		include_once 'partials/pluginkit-admin-display.php';
+		include_once plugin_dir_path( dirname( __DIR__ ) ) . 'resources/admin/views/pluginkit-admin.php';
 
 	}
 

@@ -39,19 +39,19 @@ define( 'PLUGINKIT_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-pluginkit-activator.php
+ * This action is documented in app/setup/class-pluginkit-activator.php
  */
 function activate_pluginkit() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pluginkit-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'app/setup/class-pluginkit-activator.php';
 	PluginKit_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-pluginkit-deactivator.php
+ * This action is documented in app/setup/class-pluginkit-deactivator.php
  */
 function deactivate_pluginkit() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pluginkit-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'app/setup/class-pluginkit-deactivator.php';
 	PluginKit_Deactivator::deactivate();
 }
 
@@ -62,7 +62,7 @@ register_deactivation_hook( __FILE__, 'deactivate_pluginkit' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-pluginkit.php';
+require plugin_dir_path( __FILE__ ) . 'app/setup/class-pluginkit.php';
 
 /**
  * Begins execution of the plugin.
