@@ -4,9 +4,8 @@ module.exports = {
   mode: 'jit',
   content: [
     './safelist.txt',
-    './admin/**/*.php',
-    './public/**/*.php',
-    './includes/**/*.php',
+    './resources/admin/views/*.php',
+    './resources/public/views/*.php',
   ],
   darkMode: 'class',
 }
