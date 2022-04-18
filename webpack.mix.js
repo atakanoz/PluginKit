@@ -1,7 +1,5 @@
 const mix = require('laravel-mix');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 mix
@@ -104,21 +102,13 @@ mix
 mix
   .webpackConfig({
     plugins: [
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: "source/images", to: "images" },
-          { from: "source/icons", to: "icons" },
-          { from: "source/fonts", to: "fonts" },
-        ],
-      }),
-      new ImageminPlugin({
-        test: /\.(jpe?g|png|jpg|gif|svg)$/i,
-        plugins: [
-          imageminMozjpeg({
-            quality: 80,
-          })
-        ]
-      }),
+      // new CopyWebpackPlugin({
+      //   patterns: [
+      //     { from: "resources/admin/source/images", to: "images" },
+      //     { from: "source/icons", to: "icons" },
+      //     { from: "source/fonts", to: "fonts" },
+      //   ],
+      // }),
       new StyleLintPlugin({
         files: './source/styles/**/*.scss',
         configFile: './.stylelintrc'
