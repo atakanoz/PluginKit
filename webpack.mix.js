@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const CopyWatched = require('laravel-mix-copy-watched');
 
 mix
   .setPublicPath('./');
@@ -28,10 +30,7 @@ mix
         ]
       }
     }
-  })
-  .copyDirectoryWatched('resources/admin/source/images', 'resources/admin/dist/images')
-  .copyDirectoryWatched('resources/admin/source/icons', 'resources/admin/dist/icons')
-  .copyDirectoryWatched('resources/admin/source/fonts', 'resources/admin/dist/fonts');
+  });
 
 /** ---------------------------------------------------
  * Admin JS
@@ -68,10 +67,7 @@ mix
         ]
       }
     }
-  })
-  .copyDirectoryWatched('resources/public/source/images', 'resources/public/dist/images')
-  .copyDirectoryWatched('resources/public/source/icons', 'resources/public/dist/icons')
-  .copyDirectoryWatched('resources/public/source/fonts', 'resources/public/dist/fonts');
+  });
 
 /** ---------------------------------------------------
  * Public JS
@@ -108,11 +104,23 @@ mix
 mix
   .webpackConfig({
     plugins: [
-      new StyleLintPlugin({
-        files: [
-          './resources/admin/source/styles/**/*.scss',
-          './resources/public/source/styles/**/*.scss'
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: "source/images", to: "images" },
+          { from: "source/icons", to: "icons" },
+          { from: "source/fonts", to: "fonts" },
         ],
+      }),
+      new ImageminPlugin({
+        test: /\.(jpe?g|png|jpg|gif|svg)$/i,
+        plugins: [
+          imageminMozjpeg({
+            quality: 80,
+          })
+        ]
+      }),
+      new StyleLintPlugin({
+        files: './source/styles/**/*.scss',
         configFile: './.stylelintrc'
       }),
     ]
