@@ -19,7 +19,13 @@
  * @subpackage PluginKit/public
  * @author     authorname <authoeremail.com>
  */
-class PluginKit_Public {
+
+namespace PluginKit\Core;
+
+/**
+ * Public Side
+ */
+class Frontend {
 
 	/**
 	 * The ID of this plugin.

@@ -26,7 +26,13 @@
  * @subpackage PluginKit/includes
  * @author     authorname <authoeremail.com>
  */
-class PluginKit {
+
+namespace PluginKit\Core;
+
+/**
+ * Core
+ */
+class Init {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -98,34 +104,13 @@ class PluginKit {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-loader.php';
+		$includes_paths = PLUGINKIT_PLUGIN_DIR . 'app/core/*.php';
 
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		if ( PLUGINKIT_PLUGIN_DIR . 'app/admin/class-pluginkit-admin.php' ) {
-			require_once PLUGINKIT_PLUGIN_DIR . 'app/admin/class-pluginkit-admin.php';
+		foreach ( glob( '{' . $includes_paths . '}', GLOB_BRACE ) as $filename ) {
+			require_once $filename;
 		}
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		if ( PLUGINKIT_PLUGIN_DIR . 'app/public/class-pluginkit-public.php' ) {
-			require_once PLUGINKIT_PLUGIN_DIR . 'app/public/class-pluginkit-public.php';
-		}
-
-		$this->loader = new PluginKit_Loader();
+		$this->loader = new Loader();
 
 	}
 
@@ -140,9 +125,9 @@ class PluginKit {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new PluginKit_i18n();
+		$plugin_i18n = new Internalization();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load' );
 
 	}
 
@@ -155,7 +140,7 @@ class PluginKit {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new PluginKit_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Backend( $this->get_plugin_name(), $this->get_version() );
 
 		// Enqueue Styles and Scripts.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -183,7 +168,7 @@ class PluginKit {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new PluginKit_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Frontend( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

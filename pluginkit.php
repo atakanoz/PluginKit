@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -31,10 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Currently plugin version.
+ * Global Definitions.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
+define( 'PLUGINKIT', 'pluginkit' );
+define( 'PLUGINKIT_NAME', 'PluginKit' );
 define( 'PLUGINKIT_VERSION', '1.0.0' );
 define( 'PLUGINKIT_FILE', __FILE__ );
 define( 'PLUGINKIT_PLUGIN_DIR', trailingslashit( dirname( PLUGINKIT_FILE ) ) );
@@ -42,30 +43,42 @@ define( 'PLUGINKIT_PLUGIN_URL', trailingslashit( plugin_dir_url( PLUGINKIT_FILE 
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in app/setup/class-pluginkit-activator.php
+ * This action is documented in app/core/class-pluginkit-activator.php
  */
 function activate_pluginkit() {
-	require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-activator.php';
-	PluginKit_Activator::activate();
+
+	require_once PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit-activator.php';
+
+	$activate = new PluginKit\Core\Activator();
+
+	$activate->run();
+
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in app/setup/class-pluginkit-deactivator.php
+ * This action is documented in app/core/class-pluginkit-deactivator.php
  */
 function deactivate_pluginkit() {
-	require_once PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit-deactivator.php';
-	PluginKit_Deactivator::deactivate();
+
+	require_once PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit-deactivator.php';
+
+	$deactivate = new PluginKit\Core\Deactivator();
+
+	$deactivate->run();
+
 }
 
 register_activation_hook( __FILE__, 'activate_pluginkit' );
 register_deactivation_hook( __FILE__, 'deactivate_pluginkit' );
 
+// require_once PLUGINKIT_PLUGIN_DIR . 'resources/admin/config.php';
+
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit.php';
+require PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit.php';
 
 /**
  * Begins execution of the plugin.
@@ -78,7 +91,7 @@ require PLUGINKIT_PLUGIN_DIR . 'app/setup/class-pluginkit.php';
  */
 function run_pluginkit() {
 
-	$plugin = new PluginKit();
+	$plugin = new PluginKit\Core\Init();
 	$plugin->run();
 
 }

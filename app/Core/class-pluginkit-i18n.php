@@ -24,7 +24,13 @@
  * @subpackage PluginKit/includes
  * @author     authorname <authoeremail.com>
  */
-class PluginKit_i18n {
+
+namespace PluginKit\Core;
+
+/**
+ * Internalization
+ */
+class Internalization {
 
 
 	/**
@@ -32,10 +38,10 @@ class PluginKit_i18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load() {
 
 		load_plugin_textdomain(
-			'pluginkit',
+			PLUGINKIT,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

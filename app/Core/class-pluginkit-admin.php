@@ -20,7 +20,13 @@
  * @subpackage PluginKit/admin
  * @author     authorname <authoeremail.com>
  */
-class PluginKit_Admin {
+
+namespace PluginKit\Core;
+
+/**
+ * Admin Side
+ */
+class Backend {
 
 	/**
 	 * The ID of this plugin.
@@ -123,6 +129,32 @@ class PluginKit_Admin {
 		add_submenu_page( 'plugins.php', 'Plugin settings page title', 'Admin area menu slug', 'manage_options', $this->plugin_name, array( $this, 'display_plugin_setup_page' ) );
 
 	}
+
+	/**
+	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
+	 *
+	 * @since    1.0.0
+	 */
+	public function new_page( $args = array() ) {
+
+		/**
+		 * Add a settings page for this plugin to the Settings menu.
+		 *
+		 * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
+		 *
+		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
+		 *
+		 * add_options_page( $page_title, $menu_title, $capability, $menu_slug, $function);
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/add_options_page
+		 *
+		 * If you want to list plugin options page under a custom post type, then change 'plugin.php' to e.g. 'edit.php?post_type=your_custom_post_type'
+		 */
+		add_submenu_page( $args['location'], $args['title'], $args['slug'], 'manage_options', $this->plugin_name, array( $this, 'display_plugin_setup_page' ) );
+
+	}
+
+
 
 	/**
 	 * Add settings action link to the plugins page.

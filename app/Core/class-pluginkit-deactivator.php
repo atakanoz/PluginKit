@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Fired during plugin deactivation
  *
  * @link       authoruri.com
  * @since      1.0.0
@@ -11,16 +11,22 @@
  */
 
 /**
- * Fired during plugin activation.
+ * Fired during plugin deactivation.
  *
- * This class defines all code necessary to run during the plugin's activation.
+ * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
  * @package    PluginKit
  * @subpackage PluginKit/includes
  * @author     authorname <authoeremail.com>
  */
-class PluginKit_Activator {
+
+namespace PluginKit\Core;
+
+/**
+ * Deactivator
+ */
+class Deactivator {
 
 	/**
 	 * Short Description. (use period)
@@ -29,8 +35,7 @@ class PluginKit_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
-
+	public static function run() {
 	}
 
 }

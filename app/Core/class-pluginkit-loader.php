@@ -21,7 +21,13 @@
  * @subpackage PluginKit/includes
  * @author     authorname <authoeremail.com>
  */
-class PluginKit_Loader {
+
+namespace PluginKit\Core;
+
+/**
+ * Loader
+ */
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
