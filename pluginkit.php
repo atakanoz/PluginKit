@@ -47,7 +47,7 @@ define( 'PLUGINKIT_PLUGIN_URL', trailingslashit( plugin_dir_url( PLUGINKIT_FILE 
  */
 function activate_pluginkit() {
 
-	require_once PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit-activator.php';
+	require_once PLUGINKIT_PLUGIN_DIR . 'includes/core/class-pluginkit-activator.php';
 
 	$activate = new PluginKit\Activator();
 
@@ -61,7 +61,7 @@ function activate_pluginkit() {
  */
 function deactivate_pluginkit() {
 
-	require_once PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit-deactivator.php';
+	require_once PLUGINKIT_PLUGIN_DIR . 'includes/core/class-pluginkit-deactivator.php';
 
 	$deactivate = new PluginKit\Deactivator();
 

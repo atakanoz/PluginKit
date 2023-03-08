@@ -105,7 +105,7 @@ final class Core {
 	 */
 	private function load_dependencies() {
 
-		$includes_paths = PLUGINKIT_PLUGIN_DIR . 'includes/*.php';
+		$includes_paths = PLUGINKIT_PLUGIN_DIR . 'includes/**/*.php';
 
 		foreach ( glob( '{' . $includes_paths . '}', GLOB_BRACE ) as $filename ) {
 			require_once $filename;
