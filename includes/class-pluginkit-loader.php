@@ -22,7 +22,7 @@
  * @author     authorname <authoeremail.com>
  */
 
-namespace PluginKit\Core;
+namespace PluginKit;
 
 /**
  * Loader

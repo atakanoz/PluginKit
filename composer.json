@@ -1,11 +1,13 @@
 {
-  "name": "atakanoz/pluginkit",
+  "name": "nomapress/noma-core",
   "description": "The simplest WordPress plugin boilerplate including full setup for Sass, PostCSS, Autoprefixer, stylelint, Webpack, Browsersync, etc.",
   "type": "project",
-  "authors": [{
-    "name": "Atakan Oz",
-    "email": "hello@atakanoz.com"
-  }],
+  "authors": [
+    {
+      "name": "Atakan Oz",
+      "email": "hello@atakanoz.com"
+    }
+  ],
   "require-dev": {
     "wp-coding-standards/wpcs": "^2.3"
   },
@@ -20,5 +22,8 @@
     "fix": [
       "phpcbf --extensions=php --ignore=./vendor,./node_modules,./.yarn ./"
     ]
+  },
+  "require": {
+    "aristath/kirki": "^4.1"
   }
 }

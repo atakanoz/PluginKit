@@ -21,7 +21,7 @@
  * @author     authorname <authoeremail.com>
  */
 
-namespace PluginKit\Core;
+namespace PluginKit;
 
 /**
  * Admin Side

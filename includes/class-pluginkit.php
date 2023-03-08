@@ -27,12 +27,12 @@
  * @author     authorname <authoeremail.com>
  */
 
-namespace PluginKit\Core;
+namespace PluginKit;
 
 /**
  * Core
  */
-class Init {
+final class Core {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -72,6 +72,7 @@ class Init {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'PLUGINKIT_VERSION' ) ) {
 			$this->version = PLUGINKIT_VERSION;
 		} else {
@@ -104,7 +105,7 @@ class Init {
 	 */
 	private function load_dependencies() {
 
-		$includes_paths = PLUGINKIT_PLUGIN_DIR . 'app/core/*.php';
+		$includes_paths = PLUGINKIT_PLUGIN_DIR . 'includes/*.php';
 
 		foreach ( glob( '{' . $includes_paths . '}', GLOB_BRACE ) as $filename ) {
 			require_once $filename;

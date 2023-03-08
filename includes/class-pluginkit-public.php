@@ -20,7 +20,7 @@
  * @author     authorname <authoeremail.com>
  */
 
-namespace PluginKit\Core;
+namespace PluginKit;
 
 /**
  * Public Side

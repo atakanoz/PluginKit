@@ -43,13 +43,13 @@ define( 'PLUGINKIT_PLUGIN_URL', trailingslashit( plugin_dir_url( PLUGINKIT_FILE 
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in app/core/class-pluginkit-activator.php
+ * This action is documented in includes/class-pluginkit-activator.php
  */
 function activate_pluginkit() {
 
-	require_once PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit-activator.php';
+	require_once PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit-activator.php';
 
-	$activate = new PluginKit\Core\Activator();
+	$activate = new PluginKit\Activator();
 
 	$activate->run();
 
@@ -57,13 +57,13 @@ function activate_pluginkit() {
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in app/core/class-pluginkit-deactivator.php
+ * This action is documented in includes/class-pluginkit-deactivator.php
  */
 function deactivate_pluginkit() {
 
-	require_once PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit-deactivator.php';
+	require_once PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit-deactivator.php';
 
-	$deactivate = new PluginKit\Core\Deactivator();
+	$deactivate = new PluginKit\Deactivator();
 
 	$deactivate->run();
 
@@ -78,7 +78,7 @@ register_deactivation_hook( __FILE__, 'deactivate_pluginkit' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit.php';
+require PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit.php';
 
 /**
  * Begins execution of the plugin.
@@ -89,10 +89,10 @@ require PLUGINKIT_PLUGIN_DIR . 'app/core/class-pluginkit.php';
  *
  * @since    1.0.0
  */
-function run_pluginkit() {
+function pluginkit_init() {
 
-	$plugin = new PluginKit\Core\Init();
+	$plugin = new PluginKit\Core();
 	$plugin->run();
 
 }
-run_pluginkit();
+pluginkit_init();
