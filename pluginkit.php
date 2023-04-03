@@ -90,9 +90,7 @@ require PLUGINKIT_PLUGIN_DIR . 'includes/class-pluginkit.php';
  * @since    1.0.0
  */
 function pluginkit_init() {
-
-	$plugin = new PluginKit\Core();
-	$plugin->run();
-
+	PluginKit\Core::instance();
 }
-pluginkit_init();
+
+add_action( 'plugins_loaded', 'pluginkit_init' );
