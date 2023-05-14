@@ -63,6 +63,15 @@ final class Core {
 	protected $version;
 
 	/**
+	 * The Instance
+	 *
+	 * @since 1.0.0
+	 * @access   protected
+	 * @var boolean
+	 */
+	private static $_instance = null;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
